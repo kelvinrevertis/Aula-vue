@@ -1,9 +1,19 @@
-<script setup>
+<script>
 import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import TheHeader from './components/TheHeader.vue'
+
+export default{
+  name: 'App',
+  components:{
+    HelloWorld,
+    TheHeader
+  }
+}
+
 </script>
 
 <template>
+  <TheHeader></TheHeader>
   <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
