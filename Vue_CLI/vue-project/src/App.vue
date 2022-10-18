@@ -1,26 +1,36 @@
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import TheHeader from './components/TheHeader.vue'
 
-export default{
+export default {
   name: 'App',
-  components:{
-    HelloWorld,
+  components: {
     TheHeader
+  },
+  data() {
+    return {
+      showHeader: true,
+      name: 'Jon Snow',
+      showName: false,
+      acessLevel: "marketing"
+    }
   }
 }
 
 </script>
 
 <template>
-  <TheHeader></TheHeader>
+  <TheHeader v-if="showHeader" />
+  <div v-show="showName">Nome: {{name}}</div>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+
     </div>
   </header>
+
+
+  <div v-if="acessLevel === 'admin'">Admin</div>
+  <div v-else-if="acessLevel=== 'marketing'">Marketing</div>
+  <div v-else="acessLevel==='user'">User</div>
 
   <main>
     <TheWelcome />
