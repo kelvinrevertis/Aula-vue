@@ -29,11 +29,92 @@
         </div>
         <br>
 
+        <label for="">Esportes</label>
         <select v-model="sports">
+            <option value="">Escolha</option>
             <option value="futebol">Futebol</option>
             <option value="skate">Skate</option>
             <option value="tenis">Tenis</option>
-        </select>
+        </select><br>
+        {{sports}}
+        <br><br>
+        <div>
+            <label>Newsletter</label><br>
+            <input v-model="newsletter" type="radio" value="sim">Sim
+            <input v-model="newsletter" type="radio" value="nao">Não
+            <br>{{newsletter}}
+        </div>
+
+        <br><br>
+
+        <div>
+            <label>Cores que você mais gosta</label> <br>
+            <input v-model="colors" type="checkbox" value="azul">Azul <br>
+            <input v-model="colors" type="checkbox" value="amarelo">Amarelo <br>
+            {{colors}}
+        </div>
+
+
+        <br><br>
+
+        <label>Contrato</label><br>
+        <input v-model="contract" type="checkbox" value="sim">Aceita o termos?
+        <br>{{contract}}
+
+        <br>
+        <br>
+
+
+        <div>
+            <button v-on:click="onClick()">
+                Enviar
+            </button>
+        </div>
+
+        <div>
+            <button @click="onClick">
+                Enviar2
+            </button>
+        </div>
+
+        <div @mouseover="onMouseOver()" @mouseout="onMouseOut">
+            Mouse Over
+        </div>
+
+        <form action="https://www.google.com.br/" @submit="onSubmit">
+        <button type="submit">
+            Enviar Submit
+        </button>
+        </form>
+
+        <form action="https://www.google.com.br/" @submit.prevent="onSubmitPrevent">
+        <button type="submit">
+            Submit Prevent
+        </button>
+        </form>
+
+
+        <button @click.once="onClickOnce">
+            Enviar Once
+        </button>
+        <button @click.stop="onClickStop">
+            Enviar Stop
+        </button>
+        <button @click.self="onClickSelf">
+            Enviar Self
+        </button>
+        <button @click.capture="onClickCapture">
+            Enviar Capture
+        </button>
+        <button @click.passive="onClickPassive">
+            Enviar Passive
+        </button>
+
+
+
+
+
+
 
 
         <br><br>
@@ -50,6 +131,11 @@
 
         </div>
 
+        <br><br>
+
+
+
+
         <section></section>
     </div>
 
@@ -60,6 +146,10 @@ export default {
     name: 'App',
     data() {
         return {
+            colors: [],
+            contract: false,
+            newsletter: "",
+            sports: '',
             name: 'Kelvin R',
             styleClass: { color: 'aqua', 'backgroundColor': 'green' },
             isHome: true,
@@ -102,7 +192,40 @@ export default {
                 }
             ]
         }
+    },
+    methods: {
+        onClick($evt) {
+            console.log('click',$evt)
+        },
+        onMouseOver(){
+            console.log('mouse over')
+        },
+        onMouseOut($evt){
+            console.log('mouse out',$evt)
+        },
+        onSubmit($evt){
+            console.log('on Submit', $evt)
+        },
+        onSubmitPrevent(){
+            console.log('on Submit Prevent')
+        },
+        onClickOnce(){
+            console.log('on Submit Once')
+        },
+        onClickStop(){
+            console.log('on Click Stop')
+        },
+        onClickSelf(){
+            console.log('on Click Self')
+        },
+        onClickCapture(){
+            console.log('on Click Capture')
+        },
+        onClickPassive(){
+            console.log('on Click Passive')
+        }
     }
+
 }
 </script>
 
