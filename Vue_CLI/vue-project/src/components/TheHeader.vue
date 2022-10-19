@@ -82,15 +82,15 @@
         </div>
 
         <form action="https://www.google.com.br/" @submit="onSubmit">
-        <button type="submit">
-            Enviar Submit
-        </button>
+            <button type="submit">
+                Enviar Submit
+            </button>
         </form>
 
         <form action="https://www.google.com.br/" @submit.prevent="onSubmitPrevent">
-        <button type="submit">
-            Submit Prevent
-        </button>
+            <button type="submit">
+                Submit Prevent
+            </button>
         </form>
 
 
@@ -109,7 +109,7 @@
         <button @click.passive="onClickPassive">
             Enviar Passive
         </button>
-        
+
         <div>
             <input type="text" @keyup="onKeyUp">
         </div>
@@ -134,11 +134,6 @@
             {{ index }} - {{obj.title}}
 
         </div>
-
-        <br><br>
-
-
-
 
         <section></section>
     </div>
@@ -201,42 +196,45 @@ export default {
     },
     methods: {
         onClick($evt) {
-            console.log('click',$evt)
+            console.log('click', $evt)
         },
-        onMouseOver(){
+        onMouseOver() {
             console.log('mouse over')
         },
-        onMouseOut($evt){
-            console.log('mouse out',$evt)
+        onMouseOut($evt) {
+            console.log('mouse out', $evt)
         },
-        onSubmit($evt){
+        onSubmit($evt) {
             console.log('on Submit', $evt)
         },
-        onSubmitPrevent(){
+        onSubmitPrevent() {
             console.log('on Submit Prevent')
         },
-        onClickOnce(){
+        onClickOnce() {
             console.log('on Submit Once')
         },
-        onClickStop(){
+        onClickStop() {
             console.log('on Click Stop')
         },
-        onClickSelf(){
+        onClickSelf() {
             console.log('on Click Self')
         },
-        onClickCapture(){
+        onClickCapture() {
             console.log('on Click Capture')
         },
-        onClickPassive(){
+        onClickPassive() {
             console.log('on Click Passive')
         },
-        onKeyUp(evento){
+        onKeyUp(evento) {
             console.log(evento.key)
         },
-        onKeyUpEnter(evento){
+        onKeyUpEnter(evento) {
             console.log(evento)
         }
-    }
+    },
+    methods: {
+
+    },
 
 }
 
