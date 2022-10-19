@@ -1,54 +1,86 @@
 <template>
 
-  <br><br>
   <div>
-    {{fullName}}
+    <input v-model="name2" type="text">
+    <br>
+    {{name2}}
   </div>
 
-  <h2>TODOS EM ABERTO</h2>
-  <div v-for=" todo in uncompletedTodos" :key="todo.id" class="todos-item">
-
-    {{ todo.title }} 
-
-  </div>
-  <br><br>
-
-  <H2>TODOS COMPLETOS</H2>
-  <div v-for=" todo in completedTodos" :key="todo.id" class="todos-item">
-
-    {{ todo.title }} 
-
+  <div>
+    <input v-model="name3" type="text">
+    <br>
+    {{name3}}
   </div>
   <br><br>
 
-  <div v-for=" todo in todos" :key="todo.id" class="todos-item">
-
-    <input v-model="todo.completed" type="checkbox" >
-    
-    {{ todo.title }}
-
+  <div>
+    <input v-model="user.first_name" type="text">
   </div>
 
-  <TheHeader v-if="showHeader" />
-  <div v-show="showName">Nome: {{name}}</div>
-  <header>
-    <div class="wrapper">
+  <div>
+    <input v-model="user.last_name" type="text">
+    <br>
+    {{user.first_name +" "+ user.last_name}}
+  </div>
+  <br><br>
+
+  <select v-model="pageCount">
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="15">15</option>
+  </select><br>
+  {{ pageCount }}
+
+  <div>
+    <br><br><br>
+    <div>
+      {{fullName}}
+    </div>
+
+    <h2>TODOS EM ABERTO</h2>
+    <div v-for=" todo in uncompletedTodos" :key="todo.id" class="todos-item">
+
+      {{ todo.title }}
 
     </div>
-  </header>
+    <br><br>
+
+    <h2>TODOS COMPLETOS</h2>
+    <div v-for=" todo in completedTodos" :key="todo.id" class="todos-item">
+
+      {{ todo.title }}
+
+    </div>
+    <br><br>
+
+    <div v-for=" todo in todos" :key="todo.id" class="todos-item">
+
+      <input v-model="todo.completed" type="checkbox">
+
+      {{ todo.title }}
+
+    </div>
+
+    <TheHeader v-if="showHeader" />
+    <div v-show="showName">Nome: {{name}}</div>
+    <header>
+      <div class="wrapper">
+
+      </div>
+    </header>
 
 
-  <div v-if="acessLevel === 'admin'">Admin</div>
-  <div v-else-if="acessLevel=== 'marketing'">Marketing</div>
-  <div v-else="acessLevel==='user'">User</div>
+    <div v-if="acessLevel === 'admin'">Admin</div>
+    <div v-else-if="acessLevel=== 'marketing'">Marketing</div>
+    <div v-else="acessLevel==='user'">User</div>
 
-  <main>
-    <TheWelcome />
-  </main>
+    <main>
 
-
+    </main>
 
 
+
+  </div>
 </template>
 
 
@@ -101,12 +133,37 @@ export default {
           "completed": false
         }
       ],
+      name2: '',
+      name3: '',
       showHeader: true,
       name: 'Jon Snow',
       showName: false,
-      acessLevel: "marketing"
+      acessLevel: "marketing",
+      pageCount: 5
     }
   },
+
+  watch: {
+    name2(newValue, oldValue) {
+      console.log(newValue, oldValue)
+    },
+    name3(vl) {
+      if (vl.length >= 3) {
+        this.savesUserName()
+      }
+
+    },
+    pageCount() {
+      this.changePage()
+    },
+    user: {
+      handler() {
+        console.log('User alterado!')
+      },
+      deep: true
+    },
+  },
+
   computed: {
     fullName() {
       return `${this.user.first_name} ${this.user.last_name}`
@@ -117,6 +174,15 @@ export default {
     completedTodos() {
       return this.todos.filter(todo => todo.completed)
     },
+  },
+  methods: {
+    savesUserName() {
+      console.log('Ajax')
+      console.log(this.name3)
+    },
+    changePage() {
+      console.log('Ajax changePage')
+    }
   }
 }
 
