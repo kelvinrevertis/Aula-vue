@@ -109,11 +109,15 @@
         <button @click.passive="onClickPassive">
             Enviar Passive
         </button>
+        
+        <div>
+            <input type="text" @keyup="onKeyUp">
+        </div>
+        <div>
+            <input type="text" @keyup.enter="onKeyUpEnter">
+        </div>
 
-
-
-
-
+        https://vuejs.org/guide/essentials/event-handling.html#event-modifiers
 
 
 
@@ -142,6 +146,8 @@
 </template>
 
 <script>
+import { computed } from '@vue/reactivity'
+
 export default {
     name: 'App',
     data() {
@@ -223,10 +229,17 @@ export default {
         },
         onClickPassive(){
             console.log('on Click Passive')
+        },
+        onKeyUp(evento){
+            console.log(evento.key)
+        },
+        onKeyUpEnter(evento){
+            console.log(evento)
         }
     }
 
 }
+
 </script>
 
 <style>

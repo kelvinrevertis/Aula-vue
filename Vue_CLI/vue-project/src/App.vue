@@ -1,24 +1,11 @@
-<script>
-import TheHeader from './components/TheHeader.vue'
-
-export default {
-  name: 'App',
-  components: {
-    TheHeader
-  },
-  data() {
-    return {
-      showHeader: true,
-      name: 'Jon Snow',
-      showName: false,
-      acessLevel: "marketing"
-    }
-  }
-}
-
-</script>
-
 <template>
+
+  <br><br>
+  <div>
+    {{fullName}}
+  </div>
+
+  <br><br>
   <TheHeader v-if="showHeader" />
   <div v-show="showName">Nome: {{name}}</div>
   <header>
@@ -35,8 +22,43 @@ export default {
   <main>
     <TheWelcome />
   </main>
-  
+
+
+
+
 </template>
+
+
+<script>
+import TheHeader from './components/TheHeader.vue'
+
+export default {
+  name: 'App',
+  components: {
+    TheHeader
+  },
+  data() {
+    return {
+      user: {
+        first_name: 'Jon',
+        last_name: 'Snow',
+      },
+      showHeader: true,
+      name: 'Jon Snow',
+      showName: false,
+      acessLevel: "marketing"
+    }
+  },
+  computed: {
+    fullName() {
+      return `${this.user.first_name} ${this.user.last_name}`
+    },
+  }
+}
+
+</script>
+
+
 
 <style scoped>
 header {
