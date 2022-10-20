@@ -1,4 +1,11 @@
 <template>
+
+    <div>
+        <p class="card">Teste CSS</p>
+        <BaseCard/>
+        <br>
+    </div>
+
     <div>
         <div>
             <TheHeader2 v-if="showHeader">
@@ -34,6 +41,7 @@
 <script>
 
 import TheHeader2 from './components/TheHeader2.vue'
+import BaseCard from '@/components/BaseCard.vue';
 
 export default {
     name: "App",
@@ -73,7 +81,7 @@ export default {
     watch: {},
     computed: {},
     methods: {},
-    components: { TheHeader2 }
+    components: { TheHeader2, BaseCard }
 }
 
 </script>
