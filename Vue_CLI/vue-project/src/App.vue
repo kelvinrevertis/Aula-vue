@@ -1,7 +1,21 @@
 <template>
     <div>
         <div>
-            <TheHeader2 v-if="showHeader"/>
+            <TheHeader2 v-if="showHeader">
+            <h1>Home</h1>
+            <p>Paragrafo de Teste</p>
+
+                <template v-slot:description>
+                    <p>Area do paragrafo de teste descrição</p>
+                </template>
+
+                <template v-slot:title>
+                Slot Título    
+                </template>
+
+            </TheHeader2>
+
+
             <h1>Hello World</h1>
             <br>
             <input v-model="name" type="text">
@@ -29,12 +43,12 @@ export default {
             showHeader: true,
         };
     },    
-    beforeUpdate(){
-        console.log('beforeUpdate', this.name)
-    },
-    updated(){
-        console.log('updated', this.name)
-    },
+    // beforeUpdate(){
+    //     console.log('beforeUpdate', this.name)
+    // },
+    // updated(){
+    //     console.log('updated', this.name)
+    // },
     // beforeCreate() {
     //     console.log("beforeCreate");
     //     console.log("Estado: " + this.name);
