@@ -7,11 +7,13 @@
     <div :class="baseClass">
         {{ test }}
         <slot />
+        <button @click="onClick">X</button>
     </div>
 </template>
 
 <script>
 export default {
+    emits: ["close"],
     props: {
         variant: {
             type: String,
@@ -30,11 +32,18 @@ export default {
             ]
         }
     },
+    methods:{
+        onClick(){
+            this.$emit('close')
+        },
+    }
 }
 </script>
 
 <style scoped>
 .alert {
+    display: flex;
+    justify-content: space-between;
     background-color: gray;
     padding: 5px;
     border-radius: 6px;

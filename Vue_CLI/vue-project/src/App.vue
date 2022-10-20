@@ -1,30 +1,30 @@
 <template>
 
     <div>
-        <BaseAlert :variant="variant">
-        {{text}}
+        <BaseAlert v-if="showAlert" :variant="variant" @close="onClose">
+            {{text}}
         </BaseAlert>
-        
+
     </div>
-<br>
+    <br>
     <div>
         <p class="card">Teste CSS</p>
-        <BaseCard/>
+        <BaseCard />
         <br>
     </div>
 
     <div>
         <div>
             <TheHeader2 v-if="showHeader">
-            <h1>Home</h1>
-            <p>Paragrafo de Teste</p>
+                <h1>Home</h1>
+                <p>Paragrafo de Teste</p>
 
                 <template v-slot:description>
                     <p>Area do paragrafo de teste descrição</p>
                 </template>
 
                 <template v-slot:title>
-                Slot Título    
+                    Slot Título
                 </template>
 
             </TheHeader2>
@@ -36,8 +36,8 @@
             {{name}}
             <br>
         </div>
-<br><br>
-        <button @click="showHeader = !showHeader" >
+        <br><br>
+        <button @click="showHeader = !showHeader">
             Ativar e desativar header
         </button>
 
@@ -55,15 +55,21 @@ export default {
     name: "App",
     data() {
         return {
+            showAlert: true,
             name: "Kelvin R",
             showHeader: true,
-            variant: 'danger',
-            text:"Seu formulario foi enviado com sucesso!",
+            variant: 'success',
+            text: "Seu formulario foi enviado com sucesso!",
         };
-    }, 
+    },
+    methods: {
+        onClose() {
+            this.showAlert = false
+        }
+    },
     computed: {
 
-    },   
+    },
     // beforeUpdate(){
     //     console.log('beforeUpdate', this.name)
     // },
@@ -92,8 +98,7 @@ export default {
     // },
 
     watch: {},
-    
-    methods: {},
+
     components: { TheHeader2, BaseCard, BaseAlert }
 }
 
