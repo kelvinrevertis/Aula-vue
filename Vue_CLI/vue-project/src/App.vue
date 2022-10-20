@@ -1,6 +1,13 @@
 <template>
 
     <div>
+        <BaseAlert :variant="variant">
+        {{text}}
+        </BaseAlert>
+        
+    </div>
+<br>
+    <div>
         <p class="card">Teste CSS</p>
         <BaseCard/>
         <br>
@@ -42,6 +49,7 @@
 
 import TheHeader2 from './components/TheHeader2.vue'
 import BaseCard from '@/components/BaseCard.vue';
+import BaseAlert from '@/components/BaseAlert.vue';
 
 export default {
     name: "App",
@@ -49,8 +57,13 @@ export default {
         return {
             name: "Kelvin R",
             showHeader: true,
+            variant: 'danger',
+            text:"Seu formulario foi enviado com sucesso!",
         };
-    },    
+    }, 
+    computed: {
+
+    },   
     // beforeUpdate(){
     //     console.log('beforeUpdate', this.name)
     // },
@@ -79,9 +92,9 @@ export default {
     // },
 
     watch: {},
-    computed: {},
+    
     methods: {},
-    components: { TheHeader2, BaseCard }
+    components: { TheHeader2, BaseCard, BaseAlert }
 }
 
 </script>
